@@ -23,7 +23,7 @@ public class QueenBoard {
         row -= i;
         col -= i;
       }
-      for (int i = 0; row+i <board.length && col+i < board.length; i++) {
+      for (int i = 0; row+i < board.length && col+i < board.length; i++) {
         board[row][col] += 1;
       }
       int row2 = r;
@@ -53,7 +53,7 @@ public class QueenBoard {
         row -= i;
         col -= i;
       }
-      for (int i = 0; row+i <board.length && col+i < board.length; i++) {
+      for (int i = 0; row+i < board.length && col+i < board.length; i++) {
         board[row][col] -= 1;
       }
       int row2 = r;
