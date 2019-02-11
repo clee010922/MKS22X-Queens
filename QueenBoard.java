@@ -1,7 +1,6 @@
 public class QueenBoard {
 
   private int[][] board;
-  private int boardSize;
 
   public QueenBoard(int size) {
     board = new int[size][size];
@@ -66,10 +65,16 @@ public class QueenBoard {
   */
   public String toString(){
     String result = "";
-    for (int r = 0; r < boardSize; r++) {
-      for (int c = 0; c < size; c++) {
-        board[r][c] = 0;
-
+    for (int r = 0; r < board.length; r++) {
+      for (int c = 0; c < board[0].length; c++) {
+        if (board[r][c] == -1) {
+          result += "Q ";
+        }
+        else result += "_ ";
+      }
+      s += "\n";
+    }
+    return result;
   }
 
 
