@@ -9,27 +9,12 @@ public class QueenBoard {
 
   private boolean addQueen(int r, int c) {
     if (board[r][c] == 0) {
-      for (int i = 0; i < board.length; i++) {
-        board[r][i] += 1;
-        board[i][c] += 1;
-      }
-      int row = r;
-      int col = c;
-      for (int i = 0; row-i != 0 && col-i != 0; i++) {
-        row -= i;
-        col -= i;
-      }
-      for (int i = 0; row+i < board.length && col+i < board.length; i++) {
-        board[row][col] += 1;
-      }
-      int row2 = r;
-      int col2 = c;
-      for (int i = 0; row2-i != 0 && col2+i < board.length; i++) {
-        row2 -= i;
-        col2 -= i;
-      }
-      for (int i = 0; row2+i < board.length && col2-i != 0; i++) {
-        board[row2][col2] += 1;
+      for (int i = 1; i < board.length - c; i++) {
+        board[r][c+i] += 1;
+        if (r-i >= 0)
+          board[r][c+i] += 1;
+        if (r+1 < board.length)
+          board[r+i][c+i] += 1;
       }
       board[r][c] = -1;
       return true;
@@ -168,8 +153,9 @@ public class QueenBoard {
   }
 
   public static void main(String[] args) {
-    QueenBoard trial = new QueenBoard(8);
-    QueenBoard q = new QueenBoard(3);
+    //QueenBoard trial = new QueenBoard(8);
+    QueenBoard q = new QueenBoard(5);
+    /*
     QueenBoard a = new QueenBoard(10);
     QueenBoard b = new QueenBoard(9);
     QueenBoard c = new QueenBoard(5);
@@ -185,6 +171,9 @@ public class QueenBoard {
     d.solve();
     System.out.println(d);
     System.out.println(trial);
+    */
+    q.solve();
+    System.out.println(q);
   }
 
 
