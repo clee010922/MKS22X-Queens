@@ -154,5 +154,19 @@ public class QueenBoard {
     return countSolutions(0);
   }
 
+  private int countSolutions(int col) {
+    int numSolutions = 0;
+    if (col >= board.length)
+      return 1;
+    for (int r = 0; i < board.length; r++) {
+      if (addQueen(r, col)) {
+        numSolutions += countSolutions(col+1);
+        removeQueen(r, col);
+      }
+    }
+    return numSolutions;
+  }
+  
+
 
 }
