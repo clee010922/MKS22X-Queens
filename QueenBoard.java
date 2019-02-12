@@ -108,9 +108,23 @@ public class QueenBoard {
   public boolean solve(){
     if (board[0][0] != 0)
       throw new IllegalStateException();
-    if solve(0)
+    if (solve(0))
       return true;
     else clear();
+    return false;
+  }
+
+  private boolean solve(int col) {
+    if (col >= board.length)
+      return true;
+    for (int r = 0; i < board.length; r++) {
+      if (addQueen(r, col)) {
+        if (solve(col+1)) {
+          return true;
+        }
+        else removeQueen(r, col);
+      }
+    }
     return false;
   }
 
