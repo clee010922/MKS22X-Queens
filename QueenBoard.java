@@ -115,8 +115,8 @@ public class QueenBoard {
   }
 
   public void clear() {
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
+    for (int r = 0; r < board.length; r++) {
+      for (int c = 0; c < board[0].length; c++) {
         board[r][c] = 0;
       }
     }
