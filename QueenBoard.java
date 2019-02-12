@@ -152,14 +152,14 @@ public class QueenBoard {
     QueenBoard five = new QueenBoard(5);
     QueenBoard six = new QueenBoard(6);
     QueenBoard seven = new QueenBoard(7);
-    System.out.println(zero.countSolutions());
-    System.out.println(one.countSolutions());
-    System.out.println(two.countSolutions());
-    System.out.println(three.countSolutions());
-    System.out.println(four.countSolutions());
-    System.out.println(five.countSolutions());
-    System.out.println(six.countSolutions());
-    System.out.println(seven.countSolutions());
+    System.out.println(zero.countSolutions()); //1
+    System.out.println(one.countSolutions()); //1
+    System.out.println(two.countSolutions()); //0
+    System.out.println(three.countSolutions()); //0
+    System.out.println(four.countSolutions()); //1
+    System.out.println(five.countSolutions()); //10
+    System.out.println(six.countSolutions()); //4
+    System.out.println(seven.countSolutions()); //40
   }
 
 
