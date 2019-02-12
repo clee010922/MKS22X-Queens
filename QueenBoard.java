@@ -3,38 +3,38 @@ public class QueenBoard {
   private int[][] board;
 
   public QueenBoard(int size) {
-    board = new int[size][size];
-    clear();
+    board = new int[size][size]; //creates board with given size.
+    clear(); //sets every value in 2d array as 0.
   }
 
   private boolean addQueen(int r, int c) {
-    if (board[r][c] == 0) {
-      for (int i = 1; i < board.length - c; i++) {
-        board[r][c+i] += 1;
-        if (r-i >= 0)
-          board[r-i][c+i] += 1;
-        if (r+1 < board.length)
-          board[r+i][c+i] += 1;
+    if (board[r][c] == 0) { //if not being threatend
+      for (int i = 1; i < board.length - c; i++) { //loops through to check bounds.
+        board[r][c+i] += 1; //adds a threat number horizontally.
+        if (r-i >= 0) //checks upper right corner bound.
+          board[r-i][c+i] += 1; //adds a threat number towards upper right.
+        if (r+i < board.length) //checks bound for lower right corner.
+          board[r+i][c+i] += 1; //adds a threat number towards lower right.
       }
-      board[r][c] = -1;
-      return true;
+      board[r][c] = -1; //if queen is placed, set the value as -1.
+      return true; //true because queen can be added to given coordinates.
     }
-    return false;
+    return false; //false if queen cannot be added.
   }
 
   private boolean removeQueen(int r, int c) {
-    if (board[r][c] == -1) {
-      for (int i = 1; i < board.length - c; i++) {
-        board[r][c+i] -= 1;
-        if (r-i >= 0)
-          board[r-i][c+i] -= 1;
-        if (r+1 < board.length)
-          board[r+i][c+i] -= 1;
+    if (board[r][c] == -1) { //if it is a queen
+      for (int i = 1; i < board.length - c; i++) { //loops through to check bounds.
+        board[r][c+i] -= 1; //subract a threat number horizontally.
+        if (r-i >= 0) //checks upper right corner bound.
+          board[r-i][c+i] -= 1; //subtracts a threat nubmer towards upper right.
+        if (r+i < board.length) //checks bound for lower right corner.
+          board[r+i][c+i] -= 1; //subtracts a threat nu7mber towards lower right.
       }
-      board[r][c] = 0;
-      return true;
+      board[r][c] = 0; //removes queen and reset the given coordinates to 0.
+      return true; //true if a given coordinates is a queen and can be removed.
     }
-    return false;
+    return false; //false otherwise.
   }
 
   /**
@@ -52,17 +52,17 @@ public class QueenBoard {
   *excludes the character up to the *)
   */
   public String toString(){
-    String result = "";
-    for (int r = 0; r < board.length; r++) {
-      for (int c = 0; c < board[0].length; c++) {
-        if (board[r][c] == -1) {
-          result += "Q ";
+    String result = ""; //empty string.
+    for (int r = 0; r < board.length; r++) { //loop through row.
+      for (int c = 0; c < board[0].length; c++) { //loop through column.
+        if (board[r][c] == -1) { //if specified value is a queen,
+          result += "Q "; //then add Q to the result Stringt to show that it's a queen.
         }
-        else result += "_ ";
+        else result += "_ "; //if it is not a queen, then it's an underscore.
       }
-      result += "\n";
+      result += "\n"; //new line after every row.
     }
-    return result;
+    return result; //returns the board as String.
   }
 
 
@@ -138,9 +138,8 @@ public class QueenBoard {
   }
 
   public static void main(String[] args) {
-    //QueenBoard trial = new QueenBoard(8);
-    QueenBoard q = new QueenBoard(5);
-    /*
+    QueenBoard trial = new QueenBoard(8);
+    QueenBoard q = new QueenBoard(4);
     QueenBoard a = new QueenBoard(10);
     QueenBoard b = new QueenBoard(9);
     QueenBoard c = new QueenBoard(5);
@@ -156,9 +155,7 @@ public class QueenBoard {
     d.solve();
     System.out.println(d);
     System.out.println(trial);
-    */
-    q.solve();
-    System.out.println(q);
+
   }
 
 
