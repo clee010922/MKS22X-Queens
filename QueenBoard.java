@@ -110,7 +110,12 @@ public class QueenBoard {
 
   */
   public boolean solve(){
-
+    if (board[0][0] != 0)
+      throw new IllegalStateException();
+    if solve(0)
+      return true;
+    else clear();
+    return false;
   }
 
   /**
