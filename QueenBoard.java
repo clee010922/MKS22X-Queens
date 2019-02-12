@@ -90,7 +90,7 @@ public class QueenBoard {
         }
         else result += "_ ";
       }
-      s += "\n";
+      result += "\n";
     }
     return result;
   }
@@ -121,7 +121,7 @@ public class QueenBoard {
   private boolean solve(int col) {
     if (col >= board.length)
       return true;
-    for (int r = 0; i < board.length; r++) {
+    for (int r = 0; r < board.length; r++) {
       if (addQueen(r, col)) {
         if (solve(col+1)) {
           return true;
@@ -158,7 +158,7 @@ public class QueenBoard {
     int numSolutions = 0;
     if (col >= board.length)
       return 1;
-    for (int r = 0; i < board.length; r++) {
+    for (int r = 0; r < board.length; r++) {
       if (addQueen(r, col)) {
         numSolutions += countSolutions(col+1);
         removeQueen(r, col);
@@ -166,7 +166,26 @@ public class QueenBoard {
     }
     return numSolutions;
   }
-  
+
+  public static void main(String[] args) {
+    QueenBoard trial = new QueenBoard(8);
+    QueenBoard q = new QueenBoard(3);
+    QueenBoard a = new QueenBoard(10);
+    QueenBoard b = new QueenBoard(9);
+    QueenBoard c = new QueenBoard(5);
+    QueenBoard d = new QueenBoard(4);
+    System.out.println(trial.countSolutions());
+    System.out.println(q.countSolutions());
+    System.out.println(a.countSolutions());
+    System.out.println(b.countSolutions());
+    System.out.println(c.countSolutions());
+    c.solve();
+    System.out.println(c);
+    System.out.println(d.countSolutions());
+    d.solve();
+    System.out.println(d);
+    System.out.println(trial);
+  }
 
 
 }
