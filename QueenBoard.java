@@ -75,37 +75,37 @@ public class QueenBoard {
   *@throws IllegalStateException when the board starts with any non-zero value
 
   */
-  public boolean solve(){
-    for (int r = 0; r < board.length; r++) {
-      for (int c = 0; c < board[0].length; c++) {
-        if (board[r][c] != 0)
-          throw new IllegalStateException();
+  public boolean solve(){ //wrapper function for solving the board.
+    for (int r = 0; r < board.length; r++) { //loop through row.
+      for (int c = 0; c < board[0].length; c++) { //loop through column.
+        if (board[r][c] != 0) //if board starts with any non-zero values,
+          throw new IllegalStateException(); //throw an error.
       }
     }
-    if (solve(0))
-      return true;
-    else clear();
-    return false;
+    if (solve(0)) //uses the helperfunction.
+      return true; //returns true if it is solveable.
+    else clear(); //if it is not solveable, clear the board.
+    return false; //not solveable.
   }
 
-  private boolean solve(int col) {
-    if (col >= board.length)
+  private boolean solve(int col) { //helper function for solve. Taken mostly from the pseudocode on Mr. K's website.
+    if (col >= board.length) //checking bound.
       return true;
-    for (int r = 0; r < board.length; r++) {
-      if (addQueen(r, col)) {
-        if (solve(col+1)) {
-          return true;
+    for (int r = 0; r < board.length; r++) { //loop through row.
+      if (addQueen(r, col)) { //add a queen to a specified place.
+        if (solve(col+1)) { //recursive part. If you can solve with adding queen at next column,
+          return true; //return true;
         }
-        else removeQueen(r, col);
+        else removeQueen(r, col); //if not possible, then remove queen and try again.
       }
     }
-    return false;
+    return false; //return false if it is not solveable.
   }
 
   public void clear() {
-    for (int r = 0; r < board.length; r++) {
-      for (int c = 0; c < board[0].length; c++) {
-        board[r][c] = 0;
+    for (int r = 0; r < board.length; r++) { //loop through row.
+      for (int c = 0; c < board[0].length; c++) { //loop through column.
+        board[r][c] = 0; //sets every value of the board to 0.
       }
     }
   }
@@ -115,28 +115,31 @@ public class QueenBoard {
   *@throws IllegalStateException when the board starts with any non-zero value
   */
   public int countSolutions(){
-    for (int r = 0; r < board.length; r++) {
-      for (int c = 0; c < board[0].length; c++) {
-        if (board[r][c] != 0)
-          throw new IllegalStateException();
+    for (int r = 0; r < board.length; r++) { //loop through row.
+      for (int c = 0; c < board[0].length; c++) { //loop through column.
+        if (board[r][c] != 0) //if board starts with any non-zero values,
+          throw new IllegalStateException(); //throw an error.
       }
     }
-    return countSolutions(0);
+    int numSolutions = countSolutions(0); //helper function.
+    clear(); //clears the board.
+    return numSolutions; //number of solutiosn to the board.
   }
 
   private int countSolutions(int col) {
-    int numSolutions = 0;
-    if (col >= board.length)
+    int numSolutions = 0; //number of solutions.
+    if (col >= board.length) //checking bound.
       return 1;
-    for (int r = 0; r < board.length; r++) {
-      if (addQueen(r, col)) {
-        numSolutions += countSolutions(col+1);
-        removeQueen(r, col);
+    for (int r = 0; r < board.length; r++) { //check through row.
+      if (addQueen(r, col)) { //if you can add a queen to the index,
+        numSolutions += countSolutions(col+1); //recursive part: increment the numSolutions everytime there is a solution.
+        removeQueen(r, col); //remove the queen to try every possible cases.
       }
     }
-    return numSolutions;
+    return numSolutions; //returns the number of solutions to the given board.
   }
 
+  //driver to test the code. Thanks to Minjun Seo for sharing this driver.
   public static void main(String[] args) {
     QueenBoard trial = new QueenBoard(8);
     QueenBoard q = new QueenBoard(4);
