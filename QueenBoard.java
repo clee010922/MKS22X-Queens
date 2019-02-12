@@ -82,6 +82,8 @@ public class QueenBoard {
           throw new IllegalStateException(); //throw an error.
       }
     }
+    if (board.length == 0)
+      return true;
     if (solve(0)) //uses the helperfunction.
       return true; //returns true if it is solveable.
     else clear(); //if it is not solveable, clear the board.
@@ -121,6 +123,8 @@ public class QueenBoard {
           throw new IllegalStateException(); //throw an error.
       }
     }
+    if (board.length == 0)
+      return 1;
     int numSolutions = countSolutions(0); //helper function.
     clear(); //clears the board.
     return numSolutions; //number of solutiosn to the board.
@@ -139,26 +143,23 @@ public class QueenBoard {
     return numSolutions; //returns the number of solutions to the given board.
   }
 
-  //driver to test the code. Thanks to Minjun Seo for sharing this driver.
   public static void main(String[] args) {
-    QueenBoard trial = new QueenBoard(8);
-    QueenBoard q = new QueenBoard(4);
-    QueenBoard a = new QueenBoard(10);
-    QueenBoard b = new QueenBoard(9);
-    QueenBoard c = new QueenBoard(5);
-    QueenBoard d = new QueenBoard(4);
-    System.out.println(trial.countSolutions());
-    System.out.println(q.countSolutions());
-    System.out.println(a.countSolutions());
-    System.out.println(b.countSolutions());
-    System.out.println(c.countSolutions());
-    c.solve();
-    System.out.println(c);
-    System.out.println(d.countSolutions());
-    d.solve();
-    System.out.println(d);
-    System.out.println(trial);
-
+    QueenBoard zero = new QueenBoard(0);
+    QueenBoard one = new QueenBoard(1);
+    QueenBoard two = new QueenBoard(2);
+    QueenBoard three = new QueenBoard(3);
+    QueenBoard four = new QueenBoard(4);
+    QueenBoard five = new QueenBoard(5);
+    QueenBoard six = new QueenBoard(6);
+    QueenBoard seven = new QueenBoard(7);
+    System.out.println(zero.countSolutions());
+    System.out.println(one.countSolutions());
+    System.out.println(two.countSolutions());
+    System.out.println(three.countSolutions());
+    System.out.println(four.countSolutions());
+    System.out.println(five.countSolutions());
+    System.out.println(six.countSolutions());
+    System.out.println(seven.countSolutions());
   }
 
 
