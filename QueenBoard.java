@@ -187,9 +187,6 @@ public static void runTest(int i){
     runTest(3);
     runTest(4);
     runTest(5);
-    runTest(6);
-    runTest(7);
-
   }
 
 
